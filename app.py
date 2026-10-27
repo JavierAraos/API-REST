@@ -37,8 +37,44 @@ try:
     # ============================
     # 2. Metodo POST
     # ============================
+    
+    print("\n POST --- Crear un producto ---")
+    
+    nuevo_producto = {
+        "title": "Teclado mecanico gamer",
+        "price": 90000,
+        "description": "Teclado para juegos",
+        "category": "electronica"
+    }
+    
+    respuesta = requests.post(
+        f"{BASE_URL}/add",
+        json = nuevo_producto,
+        timeout=10
+    )
+    respuesta.raise_for_status()
+    mostrar_respuesta(respuesta)
+    
+    # ============================
+    # 3. Metodo PUT
+    # ============================
+    
+    print("\n POST --- Actualizar un producto ---")
+    
+    producto_actualizado = {
+        "title": "Notebook para desarrollar",
+        "price": 190000,
+        "description": "Notebook para programar",
+        "category": "laptops"
+    }
+    
+    respuesta = requests.put(
+    f"{BASE_URL}/1",
+    json = producto_actualizado,
+    timeout=10
+    )
+    respuesta.raise_for_status()
+    mostrar_respuesta(respuesta)
 
 except requests.exceptions.timeout:
     print("Error: se agotó el tiempo de espera")
-
-
